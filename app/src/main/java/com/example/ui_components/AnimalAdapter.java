@@ -58,13 +58,17 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
         return animals.size();
     }
 
-    /** ViewHolder：缓存列表项中的控件引用，避免重复 findViewById */
-    static class AnimalViewHolder extends RecyclerView.ViewHolder {
-        final ImageView ivAnimal;
-        final TextView tvName;
-        final TextView tvDesc;
+    /**
+     * ViewHolder：缓存列表项中的控件引用，避免重复 findViewById。
+     * 因为它在 public 方法 onCreateViewHolder() / onBindViewHolder() 的签名中出现，
+     * 所以必须声明为 public，否则会触发 "exposed outside its defined visibility scope" 警告。
+     */
+    public static class AnimalViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView ivAnimal;
+        private final TextView tvName;
+        private final TextView tvDesc;
 
-        AnimalViewHolder(@NonNull View itemView) {
+        public AnimalViewHolder(@NonNull View itemView) {
             super(itemView);
             ivAnimal = itemView.findViewById(R.id.iv_animal);
             tvName = itemView.findViewById(R.id.tv_name);
