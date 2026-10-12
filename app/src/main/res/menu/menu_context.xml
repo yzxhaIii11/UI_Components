@@ -6,16 +6,16 @@
     <item
         android:id="@+id/action_copy"
         android:icon="@drawable/ic_copy"
-        android:title="复制"
-        app:showAsAction="always" />
+        android:title="@string/context_copy"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share"
-        android:title="分享"
-        app:showAsAction="always" />
+        android:title="@string/context_share"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_delete"
         android:icon="@drawable/ic_delete"
-        android:title="删除"
-        app:showAsAction="always" />
+        android:title="@string/context_delete"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -36,4 +36,19 @@
     <!-- 任务5：RecyclerView 列表；%1$d 为记录数量占位符 -->
     <string name="recycler_view_title">任务5：RecyclerView 列表</string>
     <string name="recycler_view_count">当前共 %1$d 条记录（单击列表项会增加一条记录）</string>
+
+    <!-- 任务3：选项菜单（res/menu/menu_options.xml） -->
+    <string name="menu_font_size">字体大小</string>
+    <string name="menu_size_small">小（10号字）</string>
+    <string name="menu_size_medium">中（16号字）</string>
+    <string name="menu_size_large">大（20号字）</string>
+    <string name="menu_normal_item">普通菜单项</string>
+    <string name="menu_font_color">字体颜色</string>
+    <string name="menu_color_black">黑色</string>
+    <string name="menu_color_red">红色</string>
+
+    <!-- 任务4：上下文菜单（res/menu/menu_context.xml） -->
+    <string name="context_copy">复制</string>
+    <string name="context_share">分享</string>
+    <string name="context_delete">删除</string>
 </resources>

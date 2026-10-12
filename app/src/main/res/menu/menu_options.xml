@@ -5,19 +5,19 @@
     <!-- 字体大小：小（10号）/ 中（16号）/ 大（20号），单选 -->
     <item
         android:id="@+id/font_size"
-        android:title="字体大小">
+        android:title="@string/menu_font_size">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/size_small"
-                    android:title="小（10号字）" />
+                    android:title="@string/menu_size_small" />
                 <item
                     android:id="@+id/size_medium"
                     android:checked="true"
-                    android:title="中（16号字）" />
+                    android:title="@string/menu_size_medium" />
                 <item
                     android:id="@+id/size_large"
-                    android:title="大（20号字）" />
+                    android:title="@string/menu_size_large" />
             </group>
         </menu>
     </item>
@@ -25,21 +25,21 @@
     <!-- 普通菜单项：点击弹出 Toast -->
     <item
         android:id="@+id/normal_item"
-        android:title="普通菜单项" />
+        android:title="@string/menu_normal_item" />
 
     <!-- 字体颜色：红色 / 黑色，单选 -->
     <item
         android:id="@+id/font_color"
-        android:title="字体颜色">
+        android:title="@string/menu_font_color">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/color_black"
                     android:checked="true"
-                    android:title="黑色" />
+                    android:title="@string/menu_color_black" />
                 <item
                     android:id="@+id/color_red"
-                    android:title="红色" />
+                    android:title="@string/menu_color_red" />
             </group>
         </menu>
     </item>
