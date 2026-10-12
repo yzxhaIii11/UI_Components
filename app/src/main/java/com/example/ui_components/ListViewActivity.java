@@ -52,32 +52,10 @@ public class ListViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listview);
         EdgeInsetHelper.apply(findViewById(R.id.root));
 
-        // Android 13（API 33）及以上：发送通知前需要动态申请 POST_NOTIFICATIONS 权限
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
-                    REQUEST_NOTIFICATION_PERMISSION);
-        }
-
-        // SimpleAdapter 的数据源：List<Map<String, Object>>
-        List<Map<String, Object>> data = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            Map<String, Object> item = new HashMap<>();
-            item.put("image", images[i]);   // key "image" 绑定到列表项的 ImageView
-            item.put("name", names[i]);     // key "name" 绑定到列表项的名称 TextView
-            item.put("desc", englishNames[i] + " · 动物"); // key "desc" 绑定到描述 TextView
-            data.add(item);
-        }
-
-        // 三个 key 依次对应 item_simple_list.xml 中的三个控件
-        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.item_simple_list,
-                new String[]{"image", "name", "desc"},
-                new int[]{R.id.iv_icon, R.id.tv_name, R.id.tv_desc});
+        requestNotificationPermissionIfNeeded();
 
         ListView listView = findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
+        listView.setAdapter(createAdapter());
 
         // 单击列表项：Toast 显示选中信息，并发送一条通知
         listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -88,6 +66,34 @@ public class ListViewActivity extends AppCompatActivity {
         });
     }
 
+    /** 构建 SimpleAdapter：把数据源的 image / name / desc 绑定到列表项布局的三个控件 */
+    private SimpleAdapter createAdapter() {
+        // SimpleAdapter 的数据源：List<Map<String, Object>>
+        List<Map<String, Object>> data = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
+            Map<String, Object> item = new HashMap<>();
+            item.put("image", images[i]);   // key "image" 绑定到列表项的 ImageView
+            item.put("name", names[i]);     // key "name" 绑定到列表项的名称 TextView
+            item.put("desc", englishNames[i] + " · 动物"); // key "desc" 绑定到描述 TextView
+            data.add(item);
+        }
+        // 三个 key 依次对应 item_simple_list.xml 中的三个控件
+        return new SimpleAdapter(this, data, R.layout.item_simple_list,
+                new String[]{"image", "name", "desc"},
+                new int[]{R.id.iv_icon, R.id.tv_name, R.id.tv_desc});
+    }
+
+    /** Android 13（API 33）及以上：发送通知前需要动态申请 POST_NOTIFICATIONS 权限 */
+    private void requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                    REQUEST_NOTIFICATION_PERMISSION);
+        }
+    }
+
     /**
      * 发送通知：
      * - 通知的图片（Icon）为应用程序图标
@@ -95,13 +101,16 @@ public class ListViewActivity extends AppCompatActivity {
      * - 通知内容自拟
      */
     private void sendNotification(String itemName) {
-        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
-
-        // Android 13+ 未开启通知权限时给出提示
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !manager.areNotificationsEnabled()) {
+        // 发送前显式检查通知权限：Android 13+ 未授权时 notify() 会被系统直接忽略，
+        // 所以这里先判断权限并给出提示，避免"发了却看不到通知"的困惑。
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "通知权限未开启，请在系统设置中允许通知", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
 
         // Android 8.0（API 26）及以上必须先创建通知渠道
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
