@@ -61,6 +61,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     private void updateCount() {
-        tvCount.setText("当前共 " + animals.size() + " 条记录（单击列表项会增加一条记录）");
+        tvCount.setText(getString(R.string.recycler_view_count, animals.size()));
     }
 }

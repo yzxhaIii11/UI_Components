@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/header_bg"
         android:padding="16dp"
-        android:text="任务3：XML 定义菜单（点击右上角 ⋮）"
+        android:text="@string/menu_title"
         android:textColor="#FF212121"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="64dp"
-        android:text="测试文本：Android 界面组件"
+        android:text="@string/menu_test_text"
         android:textColor="#FF000000"
         android:textSize="16sp" />
 
@@ -32,9 +32,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="菜单项：字体大小（小10号 / 中16号 / 大20号）
-普通菜单项（点击弹 Toast）
-字体颜色（红色 / 黑色）"
+        android:text="@string/menu_hint"
         android:textColor="#FF757575"
         android:textSize="13sp" />
 </LinearLayout>

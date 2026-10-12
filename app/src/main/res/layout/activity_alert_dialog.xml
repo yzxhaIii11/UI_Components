@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/header_bg"
         android:padding="16dp"
-        android:text="任务2：自定义布局的 AlertDialog"
+        android:text="@string/alert_dialog_title"
         android:textColor="#FF212121"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -35,17 +35,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:minWidth="220dp"
-            android:text="打开自定义对话框"
+            android:text="@string/alert_dialog_open"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:paddingLeft="32dp"
-            android:paddingRight="32dp"
             android:gravity="center"
-            android:text="对话框布局 dialog_custom.xml 通过 AlertDialog.Builder.setView() 加载"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:text="@string/alert_dialog_hint"
             android:textColor="#FF757575"
             android:textSize="13sp" />
     </LinearLayout>

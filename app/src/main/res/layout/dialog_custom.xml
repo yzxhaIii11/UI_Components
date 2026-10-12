@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 实验3-2 自定义对话框布局：通过 AlertDialog.Builder.setView() 加载 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingLeft="24dp"
+    android:paddingStart="24dp"
     android:paddingTop="24dp"
-    android:paddingRight="24dp"
+    android:paddingEnd="24dp"
     android:paddingBottom="8dp">
 
     <ImageView
@@ -21,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="自定义对话框"
+        android:text="@string/dialog_custom_title"
         android:textColor="#FF212121"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -31,16 +32,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="这是一个使用 setView() 加载的自定义布局对话框，请在下方输入内容："
+        android:text="@string/dialog_custom_message"
         android:textColor="#FF757575"
         android:textSize="14sp" />
 
+    <!-- 演示用输入框：不参与系统自动填充，因此显式声明 importantForAutofill -->
     <EditText
         android:id="@+id/et_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="请输入内容"
+        android:hint="@string/dialog_custom_input_hint"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:targetApi="o" />
 </LinearLayout>

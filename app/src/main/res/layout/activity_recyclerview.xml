@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,22 +12,23 @@
         android:layout_height="wrap_content"
         android:background="@color/header_bg"
         android:padding="16dp"
-        android:text="任务5：RecyclerView 列表"
+        android:text="@string/recycler_view_title"
         android:textColor="#FF212121"
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <!-- 记录数量在代码中通过 getString(R.string.recycler_view_count, size) 实时更新 -->
     <TextView
         android:id="@+id/tv_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
         android:paddingTop="10dp"
-        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
         android:paddingBottom="10dp"
-        android:text="当前共 6 条记录（单击列表项会增加一条记录）"
         android:textColor="#FF757575"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        tools:text="当前共 6 条记录（单击列表项会增加一条记录）" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="实验三：Android 界面组件"
+            android:text="@string/main_title"
             android:textColor="#FF212121"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="ListView · AlertDialog · Menu · ActionMode · RecyclerView"
+            android:text="@string/main_subtitle"
             android:textColor="#FF757575"
             android:textSize="14sp" />
 
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="任务1：ListView + SimpleAdapter（含通知）"
+            android:text="@string/main_task1"
             android:textSize="16sp" />
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="任务2：自定义布局的 AlertDialog"
+            android:text="@string/main_task2"
             android:textSize="16sp" />
 
         <Button
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="任务3：XML 定义菜单"
+            android:text="@string/main_task3"
             android:textSize="16sp" />
 
         <Button
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="任务4：ActionMode 上下文菜单"
+            android:text="@string/main_task4"
             android:textSize="16sp" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="任务5：RecyclerView 列表"
+            android:text="@string/main_task5"
             android:textSize="16sp" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
-            android:text="实验三 · 界面组件 | 单击各任务进入对应界面"
+            android:text="@string/main_footer"
             android:textColor="#FF9E9E9E"
             android:textSize="12sp" />
     </LinearLayout>

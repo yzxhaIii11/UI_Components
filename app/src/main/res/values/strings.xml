@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">界面组件实验</string>
+
+    <!-- 主界面 -->
+    <string name="main_title">实验三：Android 界面组件</string>
+    <string name="main_subtitle">ListView · AlertDialog · Menu · ActionMode · RecyclerView</string>
+    <string name="main_task1">任务1：ListView + SimpleAdapter（含通知）</string>
+    <string name="main_task2">任务2：自定义布局的 AlertDialog</string>
+    <string name="main_task3">任务3：XML 定义菜单</string>
+    <string name="main_task4">任务4：ActionMode 上下文菜单</string>
+    <string name="main_task5">任务5：RecyclerView 列表</string>
+    <string name="main_footer">实验三 · 界面组件 | 单击各任务进入对应界面</string>
+
+    <!-- 任务1：ListView + SimpleAdapter -->
+    <string name="listview_title">任务1：ListView + SimpleAdapter</string>
+    <string name="listview_hint">单击列表项：Toast 显示选中信息，并发送一条通知（Icon 为应用程序图标，Title 为列表项内容）</string>
+
+    <!-- 任务2：自定义布局的 AlertDialog -->
+    <string name="alert_dialog_title">任务2：自定义布局的 AlertDialog</string>
+    <string name="alert_dialog_open">打开自定义对话框</string>
+    <string name="alert_dialog_hint">对话框布局 dialog_custom.xml 通过 AlertDialog.Builder.setView() 加载</string>
+    <string name="dialog_custom_title">自定义对话框</string>
+    <string name="dialog_custom_message">这是一个使用 setView() 加载的自定义布局对话框，请在下方输入内容：</string>
+    <string name="dialog_custom_input_hint">请输入内容</string>
+
+    <!-- 任务3：XML 定义菜单 -->
+    <string name="menu_title">任务3：XML 定义菜单（点击右上角 ⋮）</string>
+    <string name="menu_test_text">测试文本：Android 界面组件</string>
+    <string name="menu_hint">菜单项：字体大小（小10号 / 中16号 / 大20号）\n普通菜单项（点击弹 Toast）\n字体颜色（红色 / 黑色）</string>
+
+    <!-- 任务4：ActionMode 上下文菜单 -->
+    <string name="action_mode_title">任务4：ActionMode 上下文菜单</string>
+    <string name="action_mode_hint">长按列表项进入 ActionMode 上下文操作模式，可多选并执行复制 / 分享 / 删除</string>
+
+    <!-- 任务5：RecyclerView 列表；%1$d 为记录数量占位符 -->
+    <string name="recycler_view_title">任务5：RecyclerView 列表</string>
+    <string name="recycler_view_count">当前共 %1$d 条记录（单击列表项会增加一条记录）</string>
 </resources>
