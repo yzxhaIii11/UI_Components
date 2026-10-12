@@ -7,14 +7,13 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * 实验三：Android 界面组件
- * 主界面：通过 5 个按钮分别进入 5 个实验任务。
- *
- * 任务1：ListView + SimpleAdapter + 通知
- * 任务2：自定义布局的 AlertDialog
- * 任务3：XML 定义菜单
- * 任务4：ActionMode 上下文菜单
- * 任务5：RecyclerView 列表
+ * 实验三：Android 界面组件。
+ * 主界面：通过 5 个按钮分别进入 5 个实验任务，分别是
+ * 任务1 ListView + SimpleAdapter + 通知、
+ * 任务2 自定义布局的 AlertDialog、
+ * 任务3 XML 定义菜单、
+ * 任务4 ActionMode 上下文菜单、
+ * 任务5 RecyclerView 列表。
  */
 public class MainActivity extends AppCompatActivity {
 

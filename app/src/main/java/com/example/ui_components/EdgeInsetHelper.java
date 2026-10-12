@@ -17,7 +17,6 @@ public final class EdgeInsetHelper {
 
     /**
      * 给内容视图叠加系统栏边距。
-     *
      * @param contentView 需要处理边距的根视图
      */
     public static void apply(View contentView) {
