@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 应用基础主题（Material3，无 ActionBar） -->
+    <style name="Base.Theme.UI_Components" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+    </style>
+
+    <style name="Theme.UI_Components" parent="Base.Theme.UI_Components" />
+
+    <!-- 实验3-3 XML 菜单：需要 ActionBar 来显示右上角选项菜单（溢出菜单 ⋮） -->
+    <style name="Theme.UI_Components.Menu" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+    </style>
+</resources>

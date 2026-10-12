@@ -1,0 +1,21 @@
+# 1. 自动生成的构建文件与缓存
+/build/
+/.gradle/
+/*/build/
+captures/
+.cxx/
+.externalNativeBuild/
+
+# 2. 本地环境配置 (包含 SDK 绝对路径或本地签名密钥)
+local.properties
+
+# 3. Android Studio / IntelliJ IDEA 缓存设置
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# 4. 运行日志与操作系统自动生成的文件
+*.log
+.DS_Store
+Thumbs.db
