@@ -37,7 +37,15 @@ public class ActionModeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_actionmode);
         EdgeInsetHelper.apply(findViewById(R.id.root));
 
-        // 构建列表数据
+        ListView listView = findViewById(R.id.list_view);
+        listView.setAdapter(createAdapter());
+        // 多选模态：长按列表项即进入 ActionMode 上下文操作模式
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listView.setMultiChoiceModeListener(new ActionModeCallback(listView));
+    }
+
+    /** 构建 SimpleAdapter：把数据源的 image / name / desc 绑定到列表项布局的三个控件 */
+    private SimpleAdapter createAdapter() {
         List<Map<String, Object>> data = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             Map<String, Object> item = new HashMap<>();
@@ -46,57 +54,58 @@ public class ActionModeActivity extends AppCompatActivity {
             item.put("desc", englishNames[i] + " · 长按进入 ActionMode");
             data.add(item);
         }
-
-        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.item_actionmode,
+        return new SimpleAdapter(this, data, R.layout.item_actionmode,
                 new String[]{"image", "name", "desc"},
                 new int[]{R.id.iv_icon, R.id.tv_name, R.id.tv_desc});
+    }
 
-        ListView listView = findViewById(R.id.list_view);
-        listView.setAdapter(adapter);
-        // 多选模态：长按列表项即进入 ActionMode 上下文操作模式
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+    /** ActionMode 回调：加载 XML 上下文菜单、维护已选数量、响应菜单项点击 */
+    private final class ActionModeCallback implements AbsListView.MultiChoiceModeListener {
 
-            /** 列表项选中状态变化：更新 ActionMode 标题显示已选数量 */
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                int count = listView.getCheckedItemCount();
-                mode.setTitle("已选择 " + count + " 项");
-            }
+        private final ListView listView;
 
-            /** 进入 ActionMode：加载 XML 定义的上下文菜单 */
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                getMenuInflater().inflate(R.menu.menu_context, menu);
-                return true;
-            }
+        ActionModeCallback(ListView listView) {
+            this.listView = listView;
+        }
 
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        /** 列表项选中状态变化：更新 ActionMode 标题显示已选数量 */
+        @Override
+        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+            mode.setTitle("已选择 " + listView.getCheckedItemCount() + " 项");
+        }
+
+        /** 进入 ActionMode：加载 XML 定义的上下文菜单 */
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            getMenuInflater().inflate(R.menu.menu_context, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        /** 点击上下文菜单项：执行对应操作（Toast 演示），完成后退出 ActionMode */
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            int count = listView.getCheckedItemCount();
+            int id = item.getItemId();
+            if (id == R.id.action_copy) {
+                Toast.makeText(ActionModeActivity.this, "复制：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.action_share) {
+                Toast.makeText(ActionModeActivity.this, "分享：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.action_delete) {
+                Toast.makeText(ActionModeActivity.this, "删除：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
+            } else {
                 return false;
             }
+            mode.finish(); // 操作完成后关闭 ActionMode
+            return true;
+        }
 
-            /** 点击上下文菜单项：执行对应操作（Toast 演示），完成后退出 ActionMode */
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                int count = listView.getCheckedItemCount();
-                int id = item.getItemId();
-                if (id == R.id.action_copy) {
-                    Toast.makeText(ActionModeActivity.this, "复制：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
-                } else if (id == R.id.action_share) {
-                    Toast.makeText(ActionModeActivity.this, "分享：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
-                } else if (id == R.id.action_delete) {
-                    Toast.makeText(ActionModeActivity.this, "删除：共选中 " + count + " 项", Toast.LENGTH_SHORT).show();
-                } else {
-                    return false;
-                }
-                mode.finish(); // 操作完成后关闭 ActionMode
-                return true;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-            }
-        });
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+        }
     }
 }
