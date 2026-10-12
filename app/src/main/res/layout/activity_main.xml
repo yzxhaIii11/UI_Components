@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/main_subtitle"
-            android:textColor="#FF757575"
+            android:textColor="#FF616161"
             android:textSize="14sp" />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:text="@string/main_footer"
-            android:textColor="#FF9E9E9E"
+            android:textColor="#FF6D6D6D"
             android:textSize="12sp" />
     </LinearLayout>
 </ScrollView>
